@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src", // where source file
+    "outDir": "./dist", // where compiled js
+    "target": "es2022", // js version
+    "module": "commonjs", // output format
+    "strict": true, // strict on type
+    "esModuleInterop": true, // Allows `import x from 'y'` syntax with CommonJS modules
+    "skipLibCheck": true, // Skips type-checking .d.ts files (faster builds)
+    "resolveJsonModule": true, // Allows importing .json files
+    "forceConsistentCasingInFileNames": true // Prevents case-sensitivity bugs
+  },
+  "include": ["src/**/*"], // Which files to compile
+  "exclude": ["node_modules", "**/*.spec.ts"] // Which files to ignore
+}
