@@ -1,5 +1,6 @@
 import express, { Application, Request, Response } from "express";
-import { PORT } from "./utils/ENV";
+import { ENV } from "./configs/ENV";
+import { connectDB } from "./configs/DB";
 
 const app: Application = express();
 
@@ -14,6 +15,7 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(ENV.PORT, async () => {
+  await connectDB();
+  console.log(`Server is running on http://localhost:${ENV.PORT}`);
 });
