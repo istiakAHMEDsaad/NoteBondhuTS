@@ -1,9 +1,10 @@
-import express, { Application, Request, Response } from "express";
-import { ENV } from "./configs/ENV";
-import { connectDB } from "./configs/DB";
 import cookieParser from "cookie-parser";
-import helmet from "helmet";
 import cors from "cors";
+import express, { Application, Request, Response } from "express";
+import helmet from "helmet";
+import { connectDB } from "./configs/DB";
+import { ENV } from "./configs/ENV";
+import authRoute from "./routes/authRoute";
 
 const app: Application = express();
 
@@ -13,6 +14,9 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// routes
+app.use("/api/auth", authRoute);
 
 app.get("/", (req: Request, res: Response) => {
   res.json({
